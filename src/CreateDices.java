@@ -30,6 +30,7 @@ class CreateDices {
             dices.get(i).setBackground(Color.red);
             dices.get(i).setBorder(null);
             dices.get(i).setFocusPainted(false);
+           // dices.get(i).setIcon(new ImageIcon("D://Desctop//dice6.png"));
             dices.get(i).addActionListener(Layout.buttonListener);
             Layout.mainPanel.add(dices.get(i));
 

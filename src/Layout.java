@@ -5,6 +5,14 @@ import java.util.*;
 
 public class Layout extends JFrame {
 
+    static Object rowData[][] = { { "Spelare" }, { "Ettor" }, { "Tv√•or" }, { "Treor" },
+                                  { "Fyror" }, { "Femmor" }, { "Sexor" }, { "Summa"},
+                                  { "Bonus" }, { "Par" }, { "Tv√• par" }, { "Tretal" },
+                                  { "Fyrtal" }, { "Liten stege" }, { "Stor stege" },
+                                  { "K√•k" }, { "Chans" }, { "Yatzy" }, { "Ettor" }};
+
+    static Object columnNames[] = { "Column One" };
+    static JTable table = new JTable(rowData, columnNames);
     static JPanel mainPanel = new JPanel();
     static JButton rollDices = new JButton("Roll dices");
     static MyListener buttonListener = new MyListener();
@@ -15,9 +23,11 @@ public class Layout extends JFrame {
     }
 
     public void createFrame() {
-        // All kod fˆr att skapa och s‰tta samman ett fˆnster (dvs ett JFrame)
+        // All kod f√∂r att skapa och s√§tta samman ett f√∂nster (dvs ett JFrame)
         mainPanel.setLayout(null);
         mainPanel.setBackground(new Color(22, 103, 0));
+        add(mainPanel); // l√§gger in mainpanel i Jframe
+
         CreateDices.CreatingDices();
 
         rollDices.setBounds(100, 250, 1200, 50); // (PlaceringX, PlaceringY, StorlekX, StorlekY)
@@ -26,10 +36,18 @@ public class Layout extends JFrame {
         rollDices.setBorder(null);
         rollDices.setFocusPainted(false);
         rollDices.addActionListener(buttonListener);
+        mainPanel.add(rollDices); // l√§gger in en knapp i mainPanel
+
+
+        table.setRowHeight(100);
+        table.setBounds(100,350,1200,1000);
+        table.setFont(new Font("", Font.CENTER_BASELINE, 30));
+        table.setBackground(Color.WHITE);
+        mainPanel.add(table);
 
 
 
-        // l‰gger in en bild i jframe
+        // l√§gger in en bild i jframe
         // ImageIcon icon = new ImageIcon("D://Desctop//dice6.png");
         // JLabel label = new JLabel(icon);
         // label.setBounds(10,10,300,300);// possition och storlek
@@ -40,14 +58,10 @@ public class Layout extends JFrame {
         // mainPanel.add(new JLabel(new ImageIcon()));
 
 
-        add(mainPanel); // l‰gger in mainpanel i Jframe
-        mainPanel.add(rollDices); // l‰gger in en knapp i mainPanel
-
-        setSize(1450,400);
-        //setExtendedState(JFrame.MAXIMIZED_BOTH); //fullsk‰rm
-        setTitle("Yatzi Layout");
+        setSize(1450, 1700);
+        setTitle("Yatzy");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); //Centrerar fˆnstret mitt pÂ sk‰rmen
+        setLocationRelativeTo(null); //Centrerar f√∂nstret mitt p√• sk√§rmen
         setVisible(true);
 
     }
