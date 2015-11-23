@@ -30,7 +30,7 @@ class CreateDices {
             dices.get(i).setBackground(Color.red);
             dices.get(i).setBorder(null);
             dices.get(i).setFocusPainted(false);
-            //dices.get(i).setIcon(new ImageIcon("D://Desctop//Value1.png"));
+           // dices.get(i).setIcon(new ImageIcon("D://Desctop//dice6.png"));
             dices.get(i).addActionListener(Layout.buttonListener);
             Layout.mainPanel.add(dices.get(i));
 
@@ -53,8 +53,12 @@ class GetRandomNumber {
 
     static void RandomNumber(int index) {
 
+        //ImageIcon icon = new ImageIcon("D://Desctop//dice6.png");
         Random rand = new Random();
         int random = rand.nextInt(6) + 1;
-        CreateDices.dices.get(index).setText(Integer.toString(random));
+        CreateDices.dices.get(index).setText(Integer.toString(random));  //random nummer
+        //CreateDices.dices.get(index).setText("");
+        //CreateDices.dices.get(index).setIcon(icon);
+
     }
 }

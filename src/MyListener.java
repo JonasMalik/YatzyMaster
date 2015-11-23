@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class MyListener  implements ActionListener {
 
     int i = 0;
+    int j = 0;
     int diceCounter;
 
     @Override
@@ -21,12 +22,14 @@ public class MyListener  implements ActionListener {
                 if (CreateDices.diceClickedOrNot.get(i) == 1) {
                     CreateDices.dices.get(i).setBackground(Color.red);
                     CreateDices.diceClickedOrNot.set(i, 0);
+                    diceCounter++;
 
                 }
 
                 else if (CreateDices.diceClickedOrNot.get(i) == 0) {
                     CreateDices.dices.get(i).setBackground(Color.green);
                     CreateDices.diceClickedOrNot.set(i, 1);
+                    diceCounter--;
                 }
                 System.out.println(CreateDices.diceClickedOrNot);
             }
@@ -35,12 +38,13 @@ public class MyListener  implements ActionListener {
 
 
         if (e.getSource() == Layout.rollDices) {
-            GetRandomNumber.RandomNumber(0);
-            GetRandomNumber.RandomNumber(1);
-            GetRandomNumber.RandomNumber(2);
-            GetRandomNumber.RandomNumber(3);
-            GetRandomNumber.RandomNumber(4);
-
+            j = 0;
+            while (j<5){
+                if (CreateDices.diceClickedOrNot.get(j) == 0){
+                    GetRandomNumber.RandomNumber(j);
+                }
+                j++;
+            }
         }
 
     }

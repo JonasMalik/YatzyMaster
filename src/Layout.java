@@ -15,6 +15,7 @@ public class Layout extends JFrame {
     static JPanel mainPanel = new JPanel();
     static JButton rollDices = new JButton("Roll dices");
     static MyListener buttonListener = new MyListener();
+    static MyMouseListener mouseListener = new MyMouseListener();
     static JFrame mainFrame = new JFrame();
 
     public Layout() {
