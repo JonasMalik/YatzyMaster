@@ -1,21 +1,21 @@
 import javax.swing.*;
-import javax.swing.Timer;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
-import java.util.*;
 
 public class Layout extends JFrame {
 
-    static Object rowData[][] = { { "Spelare" }, { "Ettor" }, { "Tvåor" }, { "Treor" },
-                                  { "Fyror" }, { "Femmor" }, { "Sexor" }, { "Summa"},
-                                  { "Bonus" }, { "Par" }, { "Två par" }, { "Tretal" },
-                                  { "Fyrtal" }, { "Liten stege" }, { "Stor stege" },
-                                  { "Kåk" }, { "Chans" }, { "Yatzy" }, { "Ettor" }};
+    static Object rowData[][] = { { "  Spelare" }, { "  Ettor"       }, { "  Tvåor"      }, { "  Treor"  },
+                                  { "  Fyror"   }, { "  Femmor"      }, { "  Sexor"      }, { "  Summa"  },
+                                  { "  Bonus"   }, { "  Par"         }, { "  Två par"    }, { "  Tretal" },
+                                  { "  Fyrtal"  }, { "  Liten stege" }, { "  Stor stege" }, { "  Kåk"    },
+                                  { "  Chans"   }, { "  Yatzy"       }, { "  Total"      }};
 
     static Object columnNames[] = { "Column One" };
     static JTable table = new JTable(rowData, columnNames);
     static JPanel mainPanel = new JPanel();
     static JButton rollDices = new JButton("Roll dices");
     static MyListener buttonListener = new MyListener();
+    static JFrame mainFrame = new JFrame();
 
     public Layout() {
         super();
@@ -24,9 +24,10 @@ public class Layout extends JFrame {
 
     public void createFrame() {
         // All kod för att skapa och sätta samman ett fönster (dvs ett JFrame)
+
         mainPanel.setLayout(null);
         mainPanel.setBackground(new Color(22, 103, 0));
-        add(mainPanel); // lägger in mainpanel i Jframe
+        mainFrame.add(mainPanel); // lägger in mainpanel i Jframe
 
         CreateDices.CreatingDices();
 
@@ -39,10 +40,12 @@ public class Layout extends JFrame {
         mainPanel.add(rollDices); // lägger in en knapp i mainPanel
 
 
-        table.setRowHeight(100);
-        table.setBounds(100,350,1200,1000);
-        table.setFont(new Font("", Font.CENTER_BASELINE, 30));
-        table.setBackground(Color.WHITE);
+        table.setRowHeight(66); // höjd på raderna
+        table.setBounds(100,330,185,1254); // possition och storlek
+        table.setFont(new Font("", Font.CENTER_BASELINE, 30)); // font och storlek
+        table.setBackground(Color.WHITE); // bakgrund
+        table.setBorder(BorderFactory.createLineBorder(Color.BLACK,5)); // HERE
+        table.setFocusable(true);
         mainPanel.add(table);
 
 
@@ -58,11 +61,12 @@ public class Layout extends JFrame {
         // mainPanel.add(new JLabel(new ImageIcon()));
 
 
-        setSize(1450, 1700);
-        setTitle("Yatzy");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); //Centrerar fönstret mitt på skärmen
-        setVisible(true);
+        mainFrame.setSize(1450, 1700);
+        mainFrame.setTitle("Yatzy");
+        mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        mainFrame.setLocationRelativeTo(null); //Centrerar fönstret mitt på skärmen
+        mainFrame.setVisible(true);
+        mainFrame.setResizable(false);
 
     }
 

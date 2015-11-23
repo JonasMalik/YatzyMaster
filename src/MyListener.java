@@ -1,10 +1,6 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by jonas on 2015-11-09.
@@ -46,6 +42,7 @@ public class MyListener  implements ActionListener {
             GetRandomNumber.RandomNumber(4);
 
         }
+
     }
 }
 
