@@ -51,7 +51,7 @@ public class Layout extends JFrame {
 
 
 
-        // lägger in en bild i jframe
+        // lägger in en bild i JFrame
         // ImageIcon icon = new ImageIcon("D://Desctop//dice6.png");
         // JLabel label = new JLabel(icon);
         // label.setBounds(10,10,300,300);// possition och storlek
