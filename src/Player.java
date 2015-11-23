@@ -39,6 +39,7 @@ class CreatePlayer {
             players.get(i).table.setBounds(possition, 330, 164, 1254); // possition och storlek
             players.get(i).table.setFont(new Font("", Font.CENTER_BASELINE, 30)); // font och storlek
             players.get(i).table.setBackground(Color.WHITE); // bakgrund
+            players.get(i).table.setEnabled(false); // gör att den inte går att reigera
             players.get(i).table.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
             players.get(i).table.getColumnModel().getColumn(0).setCellRenderer( centerRenderer ); // centrerar text
             Layout.mainPanel.add(players.get(i).table);

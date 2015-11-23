@@ -46,6 +46,7 @@ public class Layout extends JFrame {
         table.setBackground(Color.WHITE); // bakgrund
         table.setBorder(BorderFactory.createLineBorder(Color.BLACK,5)); // HERE
         table.setFocusable(true);
+        table.setEnabled(false);
         mainPanel.add(table);
 
 
