@@ -15,6 +15,7 @@ public class Layout extends JFrame {
     static JPanel mainPanel = new JPanel();
     static JButton rollDices = new JButton("Roll dices");
     static MyListener buttonListener = new MyListener();
+    static MyMouseListener mouseListener = new MyMouseListener();
     static JFrame mainFrame = new JFrame();
 
     public Layout() {
@@ -46,11 +47,12 @@ public class Layout extends JFrame {
         table.setBackground(Color.WHITE); // bakgrund
         table.setBorder(BorderFactory.createLineBorder(Color.BLACK,5)); // HERE
         table.setFocusable(true);
+        table.setEnabled(false);
         mainPanel.add(table);
 
 
 
-        // lägger in en bild i jframe
+        // lägger in en bild i JFrame
         // ImageIcon icon = new ImageIcon("D://Desctop//dice6.png");
         // JLabel label = new JLabel(icon);
         // label.setBounds(10,10,300,300);// possition och storlek

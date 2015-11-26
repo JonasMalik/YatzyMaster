@@ -14,6 +14,7 @@ class CreateDices {
     static int nrOfDices = 5;
     static ArrayList<JButton> dices = new ArrayList<>();
     static ArrayList<Integer> diceClickedOrNot = new ArrayList();
+    static int[] valueOfDice = new int[5];
 
     static void CreatingDices(){
 
@@ -25,12 +26,11 @@ class CreateDices {
             dices.add(new JButton());
             dices.get(i).setText(yatzy[i]);
 
-            dices.get(i).setBounds(possition, 30, 200, 200); // (PlaceringX, PlaceringY, StorlekX, StorlekY)
+            dices.get(i).setBounds(possition, 30, 195, 192); // (PlaceringX, PlaceringY, StorlekX, StorlekY)
             dices.get(i).setFont(new Font("", Font.BOLD, 72));
-            dices.get(i).setBackground(Color.red);
+            dices.get(i).setBackground(new Color(22, 103, 0));
             dices.get(i).setBorder(null);
             dices.get(i).setFocusPainted(false);
-            //dices.get(i).setIcon(new ImageIcon("D://Desctop//Value1.png"));
             dices.get(i).addActionListener(Layout.buttonListener);
             Layout.mainPanel.add(dices.get(i));
 
@@ -50,11 +50,18 @@ class CreateDices {
 
 class GetRandomNumber {
 
+    static ImageIcon icon = new ImageIcon();
+
 
     static void RandomNumber(int index) {
 
         Random rand = new Random();
         int random = rand.nextInt(6) + 1;
-        CreateDices.dices.get(index).setText(Integer.toString(random));
+        icon = new ImageIcon("D://Desctop//Dice//"+random+".png");
+        CreateDices.dices.get(index).setText("");
+        CreateDices.dices.get(index).setIcon(icon);
+       // CreatePlayer.players.get(index).valueOfDice = random;
+        CreateDices.valueOfDice[index] = random;
+
     }
 }

@@ -7,14 +7,10 @@ import java.util.Scanner;
 
 public class Player {
 
-     Object rowData[][] = { { "1" }, { "2" }, { "3" }, { "4" },
-            { "5" }, { "6" }, { "7" }, { "8"},
-            { "9" }, { "10" }, { "11" }, { "12" },
-            { "13" }, { "14" }, { "15" },
-            { "16" }, { "17" }, { "18" }, { "19" }};
-
+     Object rowData[][] = new Object[19][1];
      Object columnNames[] = { "Column One" };
      JTable table = new JTable(rowData, columnNames);
+
 
 
 }
@@ -39,14 +35,18 @@ class CreatePlayer {
             players.get(i).table.setBounds(possition, 330, 164, 1254); // possition och storlek
             players.get(i).table.setFont(new Font("", Font.CENTER_BASELINE, 30)); // font och storlek
             players.get(i).table.setBackground(Color.WHITE); // bakgrund
+            players.get(i).table.setEnabled(false); // gör att den inte går att reigera
+            players.get(i).table.addMouseListener(Layout.mouseListener);
             players.get(i).table.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
-            players.get(i).table.getColumnModel().getColumn(0).setCellRenderer( centerRenderer ); // centrerar text
+            players.get(i).table.getColumnModel().getColumn(0).setCellRenderer(centerRenderer); // centrerar text
+            players.get(i).rowData[0][0] = j;
             Layout.mainPanel.add(players.get(i).table);
             possition = possition + 169;
 
             j++;
             i++;
         }
+        players.get(Rules.turn).table.setBorder(BorderFactory.createLineBorder(Color.RED, 10));
 
     }
 }
