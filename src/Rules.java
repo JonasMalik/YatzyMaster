@@ -34,7 +34,33 @@ public class Rules {
         if (rowSelected <=6){
             RuleOneToSix(rowSelected);
         }
-
+        else if (rowSelected == 9) {
+            RulePair();
+        }
+        else if (rowSelected == 10) {
+            RuleTwoPair();
+        }
+        else if (rowSelected == 11) {
+            RuleThreeOfAKind();
+        }
+        else if (rowSelected == 12) {
+            RuleFourOfAKind();
+        }
+        else if (rowSelected == 13) {
+            RuleSmallStraight();
+        }
+        else if (rowSelected == 14){
+            RuleBigStraight();
+        }
+        else if (rowSelected == 15) {
+            RuleFullHouse();
+        }
+        else if (rowSelected == 16) {
+            RuleChance();
+        }
+        else if (rowSelected == 17) {
+            RuleYatzy();
+        }
         return valueOfDices;
     }
 
@@ -52,25 +78,112 @@ public class Rules {
 
 
     // Räknar ut värdet av första delen på tabellen, om summan är minst 63 så får man en bonus på 50 poäng.
-    static int RuleSumAndBunus(){
+    static void RuleSumAndBunus(){
 
+        int value = 0;
+        int total = 0;
 
-        return valueOfDices;
+        for (int i = 1; i <= 6; i++){
+            if(CreatePlayer.players.get(turn).table.getModel().getValueAt(i, 0) != null){
+                value = (int) CreatePlayer.players.get(turn).table.getModel().getValueAt(i, 0);
+                total = total + value;
+            }
+        }
+        CreatePlayer.players.get(Rules.turn).rowData[7][0] = total;
+        if (total >= 63){
+            CreatePlayer.players.get(Rules.turn).rowData[8][0] = 50;
+        }
     }
 
 
     // tar det största möjliga par
-    static int RulePair(){
+    static int RulePair() {
 
+        int match = 0;
+        int j = 6;
 
+        while (match < 2 || j > 1) {
+            match = 0;
+            for (int i = 0; i < 5; i++) {
+                if (j == CreateDices.valueOfDice[i]) {
+                    match++;
+                    if (match == 2) {
+                        valueOfDices = j * 2;
+                        break;
+                    }
+                    if (match < 2) {
+                        valueOfDices = 0;
+                    }
+                }
+            }
+            j--;
+            if (match == 2){
+                break;
+            }
+        }
         return valueOfDices;
     }
+
 
 
     // tar de två största möjliga par
     static int RuleTwoPair(){
 
+        int match = 0;
+        int j = 6;
+        int valueOfDices1 = 0;
+        int valueOfDices2 = 0;
+        int check = 0;
 
+        while (match < 2 && j >= 1) {
+            match = 0;
+            for (int i = 0; i < 5; i++) {
+                if (j == CreateDices.valueOfDice[i]) {
+                    match++;
+                    if (match == 2) {
+                        valueOfDices1 = j * 2;
+                        break;
+                    }
+                    if (match < 2) {
+                        valueOfDices1 = 0;
+                    }
+                }
+            }
+            j--;
+            if (match == 2){
+                break;
+            }
+        }
+
+        match = 0;
+
+        while (match < 2 && j >= 1) {
+            match = 0;
+            for (int i = 0; i < 5; i++) {
+                if (j == CreateDices.valueOfDice[i]) {
+                    match++;
+                    if (match == 2) {
+                        valueOfDices2 = j * 2;
+                        check++;
+                        break;
+                    }
+                    if (match < 2) {
+                        valueOfDices2 = 0;
+                    }
+                }
+            }
+            j--;
+            if (match == 2){
+                break;
+            }
+        }
+
+        if (check == 1){
+            valueOfDices = valueOfDices1 + valueOfDices2;
+        }
+        else if(check == 0) {
+            valueOfDices = 0;
+        }
         return valueOfDices;
     }
 
@@ -108,9 +221,64 @@ public class Rules {
 
 
     // Ett par med två tärningar och ett par med tre tärningar
-    static int RuleFullHouse(){
+    static int RuleFullHouse() {
 
+        int match = 0;
+        int j = 6;
+        int valueOfDices1 = 0;
+        int valueOfDices2 = 0;
+        int check = 0;
 
+        while (match < 3 && j >= 1) {
+            match = 0;
+            for (int i = 0; i < 5; i++) {
+                if (j == CreateDices.valueOfDice[i]) {
+                    match++;
+                    if (match == 3) {
+                        valueOfDices1 = j * 3;
+                        check++;
+                        break;
+                    }
+
+                }
+            }
+            j--;
+            if (match == 3) {
+                break;
+            }
+        }
+
+        match = 0;
+        j = 6;
+
+        if (check == 1) {
+            while (match < 2 && j >= 1) {
+                match = 0;
+                if (j == valueOfDices1 / 3) {
+                    j--;
+                }
+                for (int i = 0; i < 5; i++) {
+                    if (j == CreateDices.valueOfDice[i]) {
+                        match++;
+                        if (match == 2) {
+                            valueOfDices2 = j * 2;
+                            check++;
+                            break;
+                        }
+                    }
+                }
+                j--;
+                if (match == 2) {
+                    break;
+                }
+            }
+        }
+
+        if (check == 2) {
+            valueOfDices = valueOfDices1 + valueOfDices2;
+        } else if (check == 0 || check == 1) {
+            valueOfDices = 0;
+        }
         return valueOfDices;
     }
 
@@ -134,10 +302,18 @@ public class Rules {
 
 
     // Räknar ut total poängen
-    static int RuleTotal(){
+    static void RuleTotal(){
 
+        int value = 0;
+        int total = 0;
 
-        return valueOfDices;
+        for (int i = 7; i <= 17; i++){
+            if(CreatePlayer.players.get(turn).table.getModel().getValueAt(i, 0) != null){
+                value = (int) CreatePlayer.players.get(turn).table.getModel().getValueAt(i, 0);
+                total = total + value;
+            }
+        }
+        CreatePlayer.players.get(Rules.turn).rowData[18][0] = total;
     }
 
 }

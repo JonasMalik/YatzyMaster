@@ -24,6 +24,10 @@ public class MyMouseListener implements MouseListener {
             CreatePlayer.players.get(Rules.turn).rowData[row][0] = Rules.RuleSelector(row);
             CreatePlayer.players.get(Rules.turn).table.setEnabled(false);
 
+            //metod för att räkna summan av första delen och dela ut bonus
+            Rules.RuleSumAndBunus();
+            // metod för att räkna total poäng
+            Rules.RuleTotal();
             // startar metod för att byta spelare
             Rules.WhosTurn();
 
@@ -36,7 +40,6 @@ public class MyMouseListener implements MouseListener {
                 i++;
             }
         }
-
 
     }
 
