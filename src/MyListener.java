@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +11,8 @@ public class MyListener  implements ActionListener {
     int i = 0;
     int j = 0;
     int diceCounter;
+    static int spins = 0;
+    static Boolean nextPlayer = false;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -20,14 +23,14 @@ public class MyListener  implements ActionListener {
             if (e.getSource() == CreateDices.dices.get(i)) {
 
                 if (CreateDices.diceClickedOrNot.get(i) == 1) {
-                    CreateDices.dices.get(i).setBackground(Color.red);
+                    CreateDices.dices.get(i).setIcon(GetRandomNumber.icon = new ImageIcon("D://Desctop//Dice//"+CreateDices.valueOfDice[i]+".png"));
                     CreateDices.diceClickedOrNot.set(i, 0);
                     diceCounter++;
 
                 }
 
                 else if (CreateDices.diceClickedOrNot.get(i) == 0) {
-                    CreateDices.dices.get(i).setBackground(Color.green);
+                    CreateDices.dices.get(i).setIcon(GetRandomNumber.icon = new ImageIcon("D://Desctop//ClickedDice//"+CreateDices.valueOfDice[i]+"Clicked.png"));
                     CreateDices.diceClickedOrNot.set(i, 1);
                     diceCounter--;
                 }
@@ -39,14 +42,24 @@ public class MyListener  implements ActionListener {
 
         if (e.getSource() == Layout.rollDices) {
             j = 0;
-            while (j<5){
-                if (CreateDices.diceClickedOrNot.get(j) == 0){
-                    GetRandomNumber.RandomNumber(j);
+            spins++;
+
+            System.out.println(spins+" "+nextPlayer);
+
+            if (spins <= 3 && nextPlayer == false) {
+                while (j < 5) {
+                    if (CreateDices.diceClickedOrNot.get(j) == 0) {
+                        GetRandomNumber.RandomNumber(j);
+                    }
+                    j++;
+
+                    if (nextPlayer == true){
+
+                        nextPlayer = false;
+                    }
                 }
-                j++;
             }
         }
-
     }
 }
 

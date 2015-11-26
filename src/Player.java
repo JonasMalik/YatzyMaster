@@ -12,6 +12,7 @@ public class Player {
      JTable table = new JTable(rowData, columnNames);
 
 
+
 }
 
 class CreatePlayer {
@@ -37,7 +38,7 @@ class CreatePlayer {
             players.get(i).table.setEnabled(false); // gör att den inte går att reigera
             players.get(i).table.addMouseListener(Layout.mouseListener);
             players.get(i).table.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
-            players.get(i).table.getColumnModel().getColumn(0).setCellRenderer( centerRenderer ); // centrerar text
+            players.get(i).table.getColumnModel().getColumn(0).setCellRenderer(centerRenderer); // centrerar text
             players.get(i).rowData[0][0] = j;
             Layout.mainPanel.add(players.get(i).table);
             possition = possition + 169;
@@ -45,6 +46,7 @@ class CreatePlayer {
             j++;
             i++;
         }
+        players.get(Rules.turn).table.setBorder(BorderFactory.createLineBorder(Color.RED, 10));
 
     }
 }
