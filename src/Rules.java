@@ -102,7 +102,7 @@ public class Rules {
         int match = 0;
         int j = 6;
 
-        while (match < 2 || j > 1) {
+        while (match < 2 && j > 1) {
             match = 0;
             for (int i = 0; i < 5; i++) {
                 if (j == CreateDices.valueOfDice[i]) {
@@ -111,15 +111,16 @@ public class Rules {
                         valueOfDices = j * 2;
                         break;
                     }
-                    if (match < 2) {
-                        valueOfDices = 0;
-                    }
                 }
             }
             j--;
             if (match == 2){
                 break;
             }
+        }
+
+        if (match != 2){
+            valueOfDices = 0;
         }
         return valueOfDices;
     }
@@ -144,9 +145,6 @@ public class Rules {
                         valueOfDices1 = j * 2;
                         break;
                     }
-                    if (match < 2) {
-                        valueOfDices1 = 0;
-                    }
                 }
             }
             j--;
@@ -166,9 +164,6 @@ public class Rules {
                         valueOfDices2 = j * 2;
                         check++;
                         break;
-                    }
-                    if (match < 2) {
-                        valueOfDices2 = 0;
                     }
                 }
             }
@@ -191,31 +186,116 @@ public class Rules {
     // tre av samma siffra
     static int RuleThreeOfAKind(){
 
+        int match = 0;
+        int j = 6;
 
+        while (match < 3 && j >= 1) {
+            match = 0;
+            for (int i = 0; i < 5; i++) {
+                if (j == CreateDices.valueOfDice[i]) {
+                    match++;
+                    if (match == 3) {
+                        valueOfDices = j * 3;
+                        break;
+                    }
+                }
+            }
+            j--;
+            if (match == 3){
+                break;
+            }
+        }
+        if (match != 3){
+            valueOfDices = 0;
+        }
         return valueOfDices;
     }
+
 
 
     // Fyra av samma siffra
     static int RuleFourOfAKind(){
 
+            int match = 0;
+            int j = 6;
 
-        return valueOfDices;
-    }
+            while (match < 4 && j >= 1) {
+                match = 0;
+                for (int i = 0; i < 5; i++) {
+                    if (j == CreateDices.valueOfDice[i]) {
+                        match++;
+                        if (match == 4) {
+                            valueOfDices = j * 4;
+                            break;
+                        }
+                    }
+                }
+                j--;
+                if (match == 4){
+                    break;
+                }
+            }
+            if (match != 4){
+                valueOfDices = 0;
+            }
+            return valueOfDices;
+        }
 
 
     // Liten stege (1,2,3,4,5)
     static int RuleSmallStraight(){
 
+            int match = 0;
+            int j = 5;
 
-        return valueOfDices;
-    }
+            while (match < 5 && j >= 1) {
+                for (int i = 0; i < 5; i++) {
+                    if (j == CreateDices.valueOfDice[i]) {
+                        match++;
+                        if (match == 5) {
+                            valueOfDices = 15;
+                            break;
+                        }
+                        break;
+                    }
+                }
+                j--;
+                if (match == 5){
+                    break;
+                }
+            }
+            if (match != 5){
+                valueOfDices = 0;
+            }
+            return valueOfDices;
+        }
 
 
     // Stor stege (2,3,4,5,6)
     static int RuleBigStraight(){
 
+        int match = 0;
+        int j = 6;
 
+        while (match < 5 && j > 1) {
+            for (int i = 0; i < 5; i++) {
+                if (j == CreateDices.valueOfDice[i]) {
+                    match++;
+                    if (match == 5) {
+                        valueOfDices = 20;
+                        break;
+                    }
+                    break;
+                }
+            }
+            j--;
+            if (match == 5){
+                break;
+            }
+        }
+        if (match != 5){
+            valueOfDices = 0;
+        }
         return valueOfDices;
     }
 
@@ -296,9 +376,30 @@ public class Rules {
     // Alla tärningar visar samma siffra
     static int RuleYatzy(){
 
+            int match = 0;
+            int j = 6;
 
-        return valueOfDices;
-    }
+            while (match < 5 && j >= 1) {
+                match = 0;
+                for (int i = 0; i < 5; i++) {
+                    if (j == CreateDices.valueOfDice[i]) {
+                        match++;
+                        if (match == 5) {
+                            valueOfDices = 50;
+                            break;
+                        }
+                    }
+                }
+                j--;
+                if (match == 5){
+                    break;
+                }
+            }
+            if (match != 5){
+                valueOfDices = 0;
+            }
+            return valueOfDices;
+        }
 
 
     // Räknar ut total poängen
