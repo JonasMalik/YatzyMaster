@@ -15,7 +15,7 @@ public class MyMouseListener implements MouseListener {
         int i = 0;
 
         System.out.println("CLICK");
-        if (row == 18 || row == 7|| row == 8 || CreateDices.valueOfDice[1] == 0){
+        if (row == 18 || row == 7|| row == 8 || Dice.valueOfDice[1] == 0){
             System.out.println("TOTAL");
         }
         else {

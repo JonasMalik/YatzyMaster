@@ -19,23 +19,23 @@ public class MyListener  implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         i = 0;
-        while (i < CreateDices.nrOfDices){
+        while (i < Dice.nrOfDices){
 
-            if (e.getSource() == CreateDices.dices.get(i)) {
+            if (e.getSource() == Dice.myDices.getDices().get(i)) {
 
-                if (CreateDices.diceClickedOrNot.get(i) == 1) {
-                    CreateDices.dices.get(i).setIcon(GetRandomNumber.icon = new ImageIcon("D://Desctop//Dice//"+CreateDices.valueOfDice[i]+".png"));
-                    CreateDices.diceClickedOrNot.set(i, 0);
+                if (Dice.diceClickedOrNot.get(i) == 1) {
+                    Dice.myDices.getDices().get(i).setIcon(GetRandomNumber.icon = new ImageIcon("D://Desctop//Dice//"+Dice.valueOfDice[i]+".png"));
+                    Dice.diceClickedOrNot.set(i, 0);
                     diceCounter++;
 
                 }
 
-                else if (CreateDices.diceClickedOrNot.get(i) == 0) {
-                    CreateDices.dices.get(i).setIcon(GetRandomNumber.icon = new ImageIcon("D://Desctop//ClickedDice//"+CreateDices.valueOfDice[i]+"Clicked.png"));
-                    CreateDices.diceClickedOrNot.set(i, 1);
+                else if (Dice.diceClickedOrNot.get(i) == 0) {
+                    Dice.myDices.getDices().get(i).setIcon(GetRandomNumber.icon = new ImageIcon("D://Desctop//ClickedDice//"+Dice.valueOfDice[i]+"Clicked.png"));
+                    Dice.diceClickedOrNot.set(i, 1);
                     diceCounter--;
                 }
-                System.out.println(CreateDices.diceClickedOrNot);
+                System.out.println(Dice.diceClickedOrNot);
             }
             i++;
         }
@@ -57,7 +57,7 @@ public class MyListener  implements ActionListener {
 
             if (spins <= 3 && nextPlayer == false) {
                 while (j < 5) {
-                    if (CreateDices.diceClickedOrNot.get(j) == 0) {
+                    if (Dice.diceClickedOrNot.get(j) == 0) {
                         GetRandomNumber.RandomNumber(j);
                     }
                     j++;

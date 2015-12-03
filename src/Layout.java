@@ -31,7 +31,7 @@ public class Layout extends JFrame {
         mainPanel.setBackground(new Color(22, 103, 0));
         mainFrame.add(mainPanel); // lägger in mainpanel i Jframe
 
-        CreateDices.CreatingDices();
+        Dice.CreatingDices();
 
         rollDices.setBounds(100, 290, 1200, 50); // (PlaceringX, PlaceringY, StorlekX, StorlekY)
         rollDices.setFont(new Font("", Font.CENTER_BASELINE, 42));

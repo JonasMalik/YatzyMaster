@@ -73,8 +73,8 @@ public class Rules {
     static int RuleOneToSix(int rule){
 
         for (int i = 0; i < 5; i++){
-            if (CreateDices.valueOfDice[i] == rule ) {
-                valueOfDices += CreateDices.valueOfDice[i];
+            if (Dice.valueOfDice[i] == rule ) {
+                valueOfDices += Dice.valueOfDice[i];
             }
         }
         return valueOfDices;
@@ -109,7 +109,7 @@ public class Rules {
         while (match < 2 && j > 1) {
             match = 0;
             for (int i = 0; i < 5; i++) {
-                if (j == CreateDices.valueOfDice[i]) {
+                if (j == Dice.valueOfDice[i]) {
                     match++;
                     if (match == 2) {
                         valueOfDices = j * 2;
@@ -143,7 +143,7 @@ public class Rules {
         while (match < 2 && j >= 1) {
             match = 0;
             for (int i = 0; i < 5; i++) {
-                if (j == CreateDices.valueOfDice[i]) {
+                if (j == Dice.valueOfDice[i]) {
                     match++;
                     if (match == 2) {
                         valueOfDices1 = j * 2;
@@ -162,7 +162,7 @@ public class Rules {
         while (match < 2 && j >= 1) {
             match = 0;
             for (int i = 0; i < 5; i++) {
-                if (j == CreateDices.valueOfDice[i]) {
+                if (j == Dice.valueOfDice[i]) {
                     match++;
                     if (match == 2) {
                         valueOfDices2 = j * 2;
@@ -196,7 +196,7 @@ public class Rules {
         while (match < 3 && j >= 1) {
             match = 0;
             for (int i = 0; i < 5; i++) {
-                if (j == CreateDices.valueOfDice[i]) {
+                if (j == Dice.valueOfDice[i]) {
                     match++;
                     if (match == 3) {
                         valueOfDices = j * 3;
@@ -226,7 +226,7 @@ public class Rules {
             while (match < 4 && j >= 1) {
                 match = 0;
                 for (int i = 0; i < 5; i++) {
-                    if (j == CreateDices.valueOfDice[i]) {
+                    if (j == Dice.valueOfDice[i]) {
                         match++;
                         if (match == 4) {
                             valueOfDices = j * 4;
@@ -254,7 +254,7 @@ public class Rules {
 
             while (match < 5 && j >= 1) {
                 for (int i = 0; i < 5; i++) {
-                    if (j == CreateDices.valueOfDice[i]) {
+                    if (j == Dice.valueOfDice[i]) {
                         match++;
                         if (match == 5) {
                             valueOfDices = 15;
@@ -283,7 +283,7 @@ public class Rules {
 
         while (match < 5 && j > 1) {
             for (int i = 0; i < 5; i++) {
-                if (j == CreateDices.valueOfDice[i]) {
+                if (j == Dice.valueOfDice[i]) {
                     match++;
                     if (match == 5) {
                         valueOfDices = 20;
@@ -316,7 +316,7 @@ public class Rules {
         while (match < 3 && j >= 1) {
             match = 0;
             for (int i = 0; i < 5; i++) {
-                if (j == CreateDices.valueOfDice[i]) {
+                if (j == Dice.valueOfDice[i]) {
                     match++;
                     if (match == 3) {
                         valueOfDices1 = j * 3;
@@ -342,7 +342,7 @@ public class Rules {
                     j--;
                 }
                 for (int i = 0; i < 5; i++) {
-                    if (j == CreateDices.valueOfDice[i]) {
+                    if (j == Dice.valueOfDice[i]) {
                         match++;
                         if (match == 2) {
                             valueOfDices2 = j * 2;
@@ -371,7 +371,7 @@ public class Rules {
     static int RuleChance(){
 
         for (int i = 0; i < 5; i++){
-            valueOfDices += CreateDices.valueOfDice[i];
+            valueOfDices += Dice.valueOfDice[i];
         }
         return valueOfDices;
     }
@@ -386,7 +386,7 @@ public class Rules {
             while (match < 5 && j >= 1) {
                 match = 0;
                 for (int i = 0; i < 5; i++) {
-                    if (j == CreateDices.valueOfDice[i]) {
+                    if (j == Dice.valueOfDice[i]) {
                         match++;
                         if (match == 5) {
                             valueOfDices = 50;
@@ -430,10 +430,10 @@ public class Rules {
         MyListener.throwsLeft = 3;
 
         while (i < 5) {
-            CreateDices.dices.get(i).setIcon(GetRandomNumber.icon = new ImageIcon("D://esctop//Dice//" + CreateDices.valueOfDice[i] + ".png"));
-            CreateDices.diceClickedOrNot.set(i, 0);
-            CreateDices.valueOfDice[i] = 0;
-            CreateDices.dices.get(i).setText(CreateDices.yatzy[i]);
+            Dice.myDices.getDices().get(i).setIcon(GetRandomNumber.icon = new ImageIcon("D://esctop//Dice//" + Dice.valueOfDice[i] + ".png"));
+            Dice.diceClickedOrNot.set(i, 0);
+            Dice.valueOfDice[i] = 0;
+            Dice.myDices.getDices().get(i).setText(Dice.yatzy[i]);
             i++;
         }
     }

@@ -35,7 +35,7 @@ public class MyPlayerListener implements ActionListener {
             }
         }
 
-        if (i == 6){
+        if (i == 4){
             AddPlayerLayout.addPlayer.setEnabled(false);
         }
 
