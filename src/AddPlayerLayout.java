@@ -6,8 +6,11 @@ import java.awt.*;
  */
 public class AddPlayerLayout extends JFrame{
 
-    static String rowData[][] = {{"  Spelare 1:", ""}, {"  Spelare 2:", ""}, {"  Spelare 3:", ""}, {"  Spelare 4:", ""}, {"  Spelare 5:", ""}, {"  Spelare 6:", ""}};
-    static String columnNames[] = { "","" };
+    static int playersPossible = 3;
+   // static String rowData[][] = {{"  Spelare 1:", ""}, {"  Spelare 2:", ""}, {"  Spelare 3:", ""}, {"  Spelare 4:", ""}, {"  Spelare 5:", ""}, {"  Spelare 6:", ""}};
+    static String rowData[][] = new String[playersPossible][1];
+    //static String columnNames[] = { "","" };
+    static String columnNames[] = { "" };
     static JPanel playerPanel = new JPanel();
     static MyPlayerListener playerButtonListener = new MyPlayerListener();
     static JFrame playerFrame = new JFrame();
@@ -42,13 +45,13 @@ public class AddPlayerLayout extends JFrame{
             tableText.setFont(new Font("", Font.CENTER_BASELINE, 50));
             playerPanel.add(tableText);
 
-            playerCounter.setText("0/6");
+            playerCounter.setText("0/"+playersPossible);
             playerCounter.setBounds(1045,1130,100,100 );
             playerCounter.setFont(new Font("", Font.CENTER_BASELINE, 30));
             playerPanel.add(playerCounter);
 
             addTable.setRowHeight(100); // höjd på raderna
-            addTable.setBounds(325,560,800,600); // possition och storlek
+            addTable.setBounds(325,560,800,100*playersPossible); // possition och storlek
             addTable.setFont(new Font("", Font.CENTER_BASELINE, 30)); // font och storlek
             addTable.setBackground(Color.WHITE); // bakgrund
             addTable.setBorder(BorderFactory.createLineBorder(Color.BLACK,5)); // HERE
@@ -74,7 +77,7 @@ public class AddPlayerLayout extends JFrame{
 
             playerFrame.setSize(1450, 1700);
             playerFrame.setTitle("Yatzy");
-            playerFrame.setDefaultCloseOperation(PlayerLayout.DISPOSE_ON_CLOSE);
+            playerFrame.setDefaultCloseOperation(playerFrame.DISPOSE_ON_CLOSE);
             playerFrame.setLocationRelativeTo(null); //Centrerar fönstret mitt på skärmen
             playerFrame.setVisible(true);
             playerFrame.setResizable(false);

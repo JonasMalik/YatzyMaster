@@ -26,30 +26,17 @@ public class MyPlayerListener implements ActionListener {
             }
             else {
                 AddPlayerLayout.addTable.setEnabled(true);
-                AddPlayerLayout.rowData[i][1] = AddPlayerLayout.input.getText();
+                AddPlayerLayout.rowData[i][0] = AddPlayerLayout.input.getText();
                 AddPlayerLayout.addTable.setEnabled(false);
                 AddPlayerLayout.input.setText("  ");
                 AddPlayerLayout.startTheGame.setEnabled(true);
                 i++;
-                AddPlayerLayout.playerCounter.setText(i + "/6");
+                AddPlayerLayout.playerCounter.setText(i + "/"+AddPlayerLayout.playersPossible);
             }
         }
 
-        if (i == 4){
+        if (i == AddPlayerLayout.playersPossible){
             AddPlayerLayout.addPlayer.setEnabled(false);
         }
-
-
-       /*
-       while(i < 6) {
-            if (e.getSource() == CreatePlayerButtons.playerButtons.get(i)) {
-                i++;
-                new Layout();
-                PlayerLayout.playerFrame.dispose();
-                CreatePlayer.CreatingPlayers(i);
-            }
-            i++;
-        }
-        */
     }
 }
