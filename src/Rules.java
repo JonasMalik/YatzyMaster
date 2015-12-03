@@ -9,6 +9,7 @@ public class Rules {
     static int turn = 0;
     static int players = CreatePlayer.players.size() - 1;
     static int valueOfDices = 0;
+    static int throwsLeft = 3;
 
     static void WhosTurn(){
 
@@ -16,11 +17,18 @@ public class Rules {
             CreatePlayer.players.get(Rules.turn).table.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
             turn++;
             CreatePlayer.players.get(Rules.turn).table.setBorder(BorderFactory.createLineBorder(Color.RED, 10));
+            Layout.throwsLeft.setText("  Kast kvar: "+throwsLeft+"  ");
+            Layout.throwsLeft.setText("  Kast kvar: 3  ");
+            Layout.playerName.setText("  Spelare: "+AddPlayerLayout.rowData[turn][1].trim().toUpperCase()+"  ");
+            Layout.rollDices.setEnabled(true);
         }
         else {
             CreatePlayer.players.get(Rules.turn).table.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
             turn = 0;
             CreatePlayer.players.get(Rules.turn).table.setBorder(BorderFactory.createLineBorder(Color.RED, 10));
+            Layout.throwsLeft.setText("  Kast kvar: 3  ");
+            Layout.playerName.setText("  Spelare: "+AddPlayerLayout.rowData[turn][1].trim().toUpperCase()+"  ");
+            Layout.rollDices.setEnabled(true);
         }
         System.out.println("player "+turn);
     }
@@ -31,35 +39,31 @@ public class Rules {
 
         valueOfDices = 0;
 
-        if (rowSelected <=6){
-            RuleOneToSix(rowSelected);
+        if (CreatePlayer.players.get(turn).table.getModel().getValueAt(rowSelected, 0) == null) {
+            if (rowSelected <= 6) {
+                RuleOneToSix(rowSelected);
+            } else if (rowSelected == 9) {
+                RulePair();
+            } else if (rowSelected == 10) {
+                RuleTwoPair();
+            } else if (rowSelected == 11) {
+                RuleThreeOfAKind();
+            } else if (rowSelected == 12) {
+                RuleFourOfAKind();
+            } else if (rowSelected == 13) {
+                RuleSmallStraight();
+            } else if (rowSelected == 14) {
+                RuleBigStraight();
+            } else if (rowSelected == 15) {
+                RuleFullHouse();
+            } else if (rowSelected == 16) {
+                RuleChance();
+            } else if (rowSelected == 17) {
+                RuleYatzy();
+            }
         }
-        else if (rowSelected == 9) {
-            RulePair();
-        }
-        else if (rowSelected == 10) {
-            RuleTwoPair();
-        }
-        else if (rowSelected == 11) {
-            RuleThreeOfAKind();
-        }
-        else if (rowSelected == 12) {
-            RuleFourOfAKind();
-        }
-        else if (rowSelected == 13) {
-            RuleSmallStraight();
-        }
-        else if (rowSelected == 14){
-            RuleBigStraight();
-        }
-        else if (rowSelected == 15) {
-            RuleFullHouse();
-        }
-        else if (rowSelected == 16) {
-            RuleChance();
-        }
-        else if (rowSelected == 17) {
-            RuleYatzy();
+        else{
+            valueOfDices = -1;
         }
         return valueOfDices;
     }
@@ -415,6 +419,23 @@ public class Rules {
             }
         }
         CreatePlayer.players.get(Rules.turn).rowData[18][0] = total;
+    }
+
+
+    static void ResetDicec(){
+
+        int i = 0;
+        MyListener.spins = 0;
+        MyListener.nextPlayer = false;
+        MyListener.throwsLeft = 3;
+
+        while (i < 5) {
+            CreateDices.dices.get(i).setIcon(GetRandomNumber.icon = new ImageIcon("D://esctop//Dice//" + CreateDices.valueOfDice[i] + ".png"));
+            CreateDices.diceClickedOrNot.set(i, 0);
+            CreateDices.valueOfDice[i] = 0;
+            CreateDices.dices.get(i).setText(CreateDices.yatzy[i]);
+            i++;
+        }
     }
 
 }

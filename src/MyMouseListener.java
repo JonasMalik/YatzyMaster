@@ -15,29 +15,32 @@ public class MyMouseListener implements MouseListener {
         int i = 0;
 
         System.out.println("CLICK");
-        if (row == 18 || row == 7|| row == 8){
+        if (row == 18 || row == 7|| row == 8 || CreateDices.valueOfDice[1] == 0){
             System.out.println("TOTAL");
         }
         else {
-            MyListener.nextPlayer = true;
-            CreatePlayer.players.get(Rules.turn).table.setEnabled(true);
-            CreatePlayer.players.get(Rules.turn).rowData[row][0] = Rules.RuleSelector(row);
-            CreatePlayer.players.get(Rules.turn).table.setEnabled(false);
+            if (Rules.RuleSelector(row) >= 0) {
+                MyListener.nextPlayer = true;
+                CreatePlayer.players.get(Rules.turn).table.setEnabled(true);
+                CreatePlayer.players.get(Rules.turn).rowData[row][0] = Rules.RuleSelector(row);
+                CreatePlayer.players.get(Rules.turn).table.setEnabled(false);
 
-            //metod för att räkna summan av första delen och dela ut bonus
-            Rules.RuleSumAndBunus();
-            // metod för att räkna total poäng
-            Rules.RuleTotal();
-            // startar metod för att byta spelare
-            Rules.WhosTurn();
+                //metod för att räkna summan av första delen och dela ut bonus
+                Rules.RuleSumAndBunus();
+                // metod för att räkna total poäng
+                Rules.RuleTotal();
+                // startar metod för att byta spelare
+                Rules.WhosTurn();
 
-            //återställning
-            MyListener.spins = 0;
-            MyListener.nextPlayer = false;
-            while (i < 5){
-                CreateDices.dices.get(i).setIcon(GetRandomNumber.icon = new ImageIcon("D://Desctop//Dice//"+CreateDices.valueOfDice[i]+".png"));
-                CreateDices.diceClickedOrNot.set(i, 0);
-                i++;
+                Rules.ResetDicec();
+               /* //återställning
+                MyListener.spins = 0;
+                MyListener.nextPlayer = false;
+                while (i < 5) {
+                    CreateDices.dices.get(i).setIcon(GetRandomNumber.icon = new ImageIcon("D://Desctop//Dice//" + CreateDices.valueOfDice[i] + ".png"));
+                    CreateDices.diceClickedOrNot.set(i, 0);
+                    i++;
+                }*/
             }
         }
 
