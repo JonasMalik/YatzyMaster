@@ -12,6 +12,7 @@ public class MyListener  implements ActionListener {
     int j = 0;
     int diceCounter;
     static int spins = 0;
+    static int throwsLeft = 3;
     static Boolean nextPlayer = false;
 
     @Override
@@ -43,7 +44,15 @@ public class MyListener  implements ActionListener {
         if (e.getSource() == Layout.rollDices) {
             j = 0;
             spins++;
+            throwsLeft--;
 
+            if (throwsLeft>0) {
+                Layout.throwsLeft.setText("  Kast kvar: " + throwsLeft + "  ");
+            }
+            else {
+                Layout.throwsLeft.setText("  Gör ditt val!  Kast kvar: 0  ");
+                Layout.rollDices.setEnabled(false);
+            }
             System.out.println(spins+" "+nextPlayer);
 
             if (spins <= 3 && nextPlayer == false) {

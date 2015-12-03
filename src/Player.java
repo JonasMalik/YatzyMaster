@@ -27,19 +27,19 @@ class CreatePlayer {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
 
-        while (i < nrOfPlayers) {
+        while (i < MyPlayerListener.i) {
 
             // skapar en tabell för varje spelare
             players.add(new Player());
             players.get(i).table.setRowHeight(66); // höjd på raderna
-            players.get(i).table.setBounds(possition, 330, 164, 1254); // possition och storlek
+            players.get(i).table.setBounds(possition, 360, 164, 1254); // possition och storlek
             players.get(i).table.setFont(new Font("", Font.CENTER_BASELINE, 30)); // font och storlek
             players.get(i).table.setBackground(Color.WHITE); // bakgrund
             players.get(i).table.setEnabled(false); // gör att den inte går att reigera
             players.get(i).table.addMouseListener(Layout.mouseListener);
             players.get(i).table.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
             players.get(i).table.getColumnModel().getColumn(0).setCellRenderer(centerRenderer); // centrerar text
-            players.get(i).rowData[0][0] = j;
+            players.get(i).rowData[0][0] = AddPlayerLayout.rowData[i][1].trim();
             Layout.mainPanel.add(players.get(i).table);
             possition = possition + 169;
 

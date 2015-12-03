@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 
 public class Layout extends JFrame {
@@ -13,7 +12,9 @@ public class Layout extends JFrame {
     static Object columnNames[] = { "Column One" };
     static JTable table = new JTable(rowData, columnNames);
     static JPanel mainPanel = new JPanel();
-    static JButton rollDices = new JButton("Roll dices");
+    static JButton rollDices = new JButton("KASTA TÄRNINGAR");
+    static JLabel playerName = new JLabel("  Spelare: "+AddPlayerLayout.rowData[0][1].trim().toUpperCase()+"  ");
+    static JLabel throwsLeft = new JLabel("  Kast kvar: 3  ");
     static MyListener buttonListener = new MyListener();
     static MyMouseListener mouseListener = new MyMouseListener();
     static JFrame mainFrame = new JFrame();
@@ -32,7 +33,7 @@ public class Layout extends JFrame {
 
         CreateDices.CreatingDices();
 
-        rollDices.setBounds(100, 250, 1200, 50); // (PlaceringX, PlaceringY, StorlekX, StorlekY)
+        rollDices.setBounds(100, 290, 1200, 50); // (PlaceringX, PlaceringY, StorlekX, StorlekY)
         rollDices.setFont(new Font("", Font.CENTER_BASELINE, 42));
         rollDices.setBackground(Color.green);
         rollDices.setBorder(null);
@@ -40,9 +41,20 @@ public class Layout extends JFrame {
         rollDices.addActionListener(buttonListener);
         mainPanel.add(rollDices); // lägger in en knapp i mainPanel
 
+        playerName.setBounds(100, 240, 600, 50);
+        playerName.setOpaque(false);
+        playerName.setFont(new Font("", Font.CENTER_BASELINE, 32));
+        playerName.setHorizontalAlignment(SwingConstants.LEFT);
+        mainPanel.add(playerName);
+
+        throwsLeft.setBounds(700, 240, 600, 50);
+        throwsLeft.setOpaque(false);
+        throwsLeft.setFont(new Font("", Font.CENTER_BASELINE, 32));
+        throwsLeft.setHorizontalAlignment(SwingConstants.RIGHT);
+        mainPanel.add(throwsLeft);
 
         table.setRowHeight(66); // höjd på raderna
-        table.setBounds(100,330,185,1254); // possition och storlek
+        table.setBounds(100,360,185,1254); // possition och storlek
         table.setFont(new Font("", Font.CENTER_BASELINE, 30)); // font och storlek
         table.setBackground(Color.WHITE); // bakgrund
         table.setBorder(BorderFactory.createLineBorder(Color.BLACK,5)); // HERE

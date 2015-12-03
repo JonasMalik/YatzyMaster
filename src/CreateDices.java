@@ -25,9 +25,8 @@ class CreateDices {
 
             dices.add(new JButton());
             dices.get(i).setText(yatzy[i]);
-
             dices.get(i).setBounds(possition, 30, 195, 192); // (PlaceringX, PlaceringY, StorlekX, StorlekY)
-            dices.get(i).setFont(new Font("", Font.BOLD, 72));
+            dices.get(i).setFont(new Font("", Font.BOLD, 120));
             dices.get(i).setBackground(new Color(22, 103, 0));
             dices.get(i).setBorder(null);
             dices.get(i).setFocusPainted(false);
