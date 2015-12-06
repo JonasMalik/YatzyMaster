@@ -2,12 +2,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by jonas on 2015-11-19.
+ * Class is used to handle all buttons of the Class named
+ * AddPlayerLayout.
  */
 public class MyPlayerListener implements ActionListener {
 
     static int i = 0;
 
+    /**
+     * Invoked when an action occurs.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -15,9 +20,10 @@ public class MyPlayerListener implements ActionListener {
 
         if (e.getSource() == AddPlayerLayout.startTheGame) {
             new Layout();
+            CreatePlayer.CreatingPlayers(i);
             AddPlayerLayout.playerFrame.dispose();
 
-            CreatePlayer.CreatingPlayers(6);
+           // CreatePlayer.CreatingPlayers(6);
         }
 
         if (e.getSource() == AddPlayerLayout.addPlayer) {
@@ -26,30 +32,17 @@ public class MyPlayerListener implements ActionListener {
             }
             else {
                 AddPlayerLayout.addTable.setEnabled(true);
-                AddPlayerLayout.rowData[i][1] = AddPlayerLayout.input.getText();
+                AddPlayerLayout.rowData[i][0] = AddPlayerLayout.input.getText();
                 AddPlayerLayout.addTable.setEnabled(false);
                 AddPlayerLayout.input.setText("  ");
                 AddPlayerLayout.startTheGame.setEnabled(true);
                 i++;
-                AddPlayerLayout.playerCounter.setText(i + "/6");
+                AddPlayerLayout.playerCounter.setText(i + "/"+AddPlayerLayout.playersPossible);
             }
         }
 
-        if (i == 6){
+        if (i == AddPlayerLayout.playersPossible){
             AddPlayerLayout.addPlayer.setEnabled(false);
         }
-
-
-       /*
-       while(i < 6) {
-            if (e.getSource() == CreatePlayerButtons.playerButtons.get(i)) {
-                i++;
-                new Layout();
-                PlayerLayout.playerFrame.dispose();
-                CreatePlayer.CreatingPlayers(i);
-            }
-            i++;
-        }
-        */
     }
 }

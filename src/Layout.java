@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This is the class that displays the second layout,
+ * this layout is made for the game Yatzy.
+ */
 public class Layout extends JFrame {
 
     static Object rowData[][] = { { "  Spelare" }, { "  Ettor"       }, { "  Tvåor"      }, { "  Treor"  },
@@ -13,17 +17,25 @@ public class Layout extends JFrame {
     static JTable table = new JTable(rowData, columnNames);
     static JPanel mainPanel = new JPanel();
     static JButton rollDices = new JButton("KASTA TÄRNINGAR");
-    static JLabel playerName = new JLabel("  Spelare: "+AddPlayerLayout.rowData[0][1].trim().toUpperCase()+"  ");
+    static JLabel playerName = new JLabel("  Spelare: "+AddPlayerLayout.rowData[0][0].trim().toUpperCase()+"  ");
     static JLabel throwsLeft = new JLabel("  Kast kvar: 3  ");
     static MyListener buttonListener = new MyListener();
     static MyMouseListener mouseListener = new MyMouseListener();
     static JFrame mainFrame = new JFrame();
 
+    /**
+     * This method call a constructor from the super class and
+     * then start the method to create a frame.
+     */
     public Layout() {
         super();
         createFrame();
     }
 
+    /**
+     * This method Creates a panel and creates and adding all
+     * the components into it, and then adds the panel to the Jframe.
+     */
     public void createFrame() {
         // All kod för att skapa och sätta samman ett fönster (dvs ett JFrame)
 
@@ -31,7 +43,7 @@ public class Layout extends JFrame {
         mainPanel.setBackground(new Color(22, 103, 0));
         mainFrame.add(mainPanel); // lägger in mainpanel i Jframe
 
-        CreateDices.CreatingDices();
+        Dice.CreatingDices();
 
         rollDices.setBounds(100, 290, 1200, 50); // (PlaceringX, PlaceringY, StorlekX, StorlekY)
         rollDices.setFont(new Font("", Font.CENTER_BASELINE, 42));
