@@ -2,12 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by jonas on 2015-12-01.
+ * This is the class that displays the first layout,
+ * this layout is used to add players.
  */
 public class AddPlayerLayout extends JFrame{
 
-    static int playersPossible = 3;
-   // static String rowData[][] = {{"  Spelare 1:", ""}, {"  Spelare 2:", ""}, {"  Spelare 3:", ""}, {"  Spelare 4:", ""}, {"  Spelare 5:", ""}, {"  Spelare 6:", ""}};
+    // Number of player possible (Max 6 players).
+    static int playersPossible = 2;
+
+    // static String rowData[][] = {{"  Spelare 1:", ""}, {"  Spelare 2:", ""}, {"  Spelare 3:", ""}, {"  Spelare 4:", ""}, {"  Spelare 5:", ""}, {"  Spelare 6:", ""}};
     static String rowData[][] = new String[playersPossible][1];
     //static String columnNames[] = { "","" };
     static String columnNames[] = { "" };
@@ -22,11 +25,20 @@ public class AddPlayerLayout extends JFrame{
     static JLabel tableText = new JLabel();
     static JLabel playerCounter = new JLabel();
 
+
+    /**
+     * This method call a constructor from the super class and
+     * then start the method to create a frame.
+     */
         public AddPlayerLayout() {
             super();
             createFrame();
         }
 
+    /**
+     * This method Creates a panel and creates and adding all
+     * the components into it, and then adds the panel to the Jframe.
+     */
         public void createFrame() {
             // All kod för att skapa och sätta samman ett fönster (dvs ett JFrame)
 

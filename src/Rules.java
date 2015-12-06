@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by jonas on 2015-11-24.
+ * Class is used to store all rules .
  */
 public class Rules {
 
@@ -11,6 +11,9 @@ public class Rules {
     static int valueOfDices = 0;
     static int throwsLeft = 3;
 
+    /**
+     * Method used to show which player it is to play right now.
+     */
     static void WhosTurn(){
 
         if (turn < players){
@@ -19,7 +22,7 @@ public class Rules {
             CreatePlayer.players.get(Rules.turn).table.setBorder(BorderFactory.createLineBorder(Color.RED, 10));
             Layout.throwsLeft.setText("  Kast kvar: "+throwsLeft+"  ");
             Layout.throwsLeft.setText("  Kast kvar: 3  ");
-            Layout.playerName.setText("  Spelare: "+AddPlayerLayout.rowData[turn][1].trim().toUpperCase()+"  ");
+            Layout.playerName.setText("  Spelare: "+AddPlayerLayout.rowData[turn][0].trim().toUpperCase()+"  ");
             Layout.rollDices.setEnabled(true);
         }
         else {
@@ -27,13 +30,18 @@ public class Rules {
             turn = 0;
             CreatePlayer.players.get(Rules.turn).table.setBorder(BorderFactory.createLineBorder(Color.RED, 10));
             Layout.throwsLeft.setText("  Kast kvar: 3  ");
-            Layout.playerName.setText("  Spelare: "+AddPlayerLayout.rowData[turn][1].trim().toUpperCase()+"  ");
+            Layout.playerName.setText("  Spelare: "+AddPlayerLayout.rowData[turn][0].trim().toUpperCase()+"  ");
             Layout.rollDices.setEnabled(true);
         }
         System.out.println("player "+turn);
     }
 
 
+    /**
+     * Method used to select which rule to do.
+     * @param rowSelected Row clicked on.
+     * @return Returns the value from the specific rule.
+     */
     // Väljer regel beroende på vilken rad du klickar på
     static int RuleSelector(int rowSelected){
 
@@ -69,6 +77,11 @@ public class Rules {
     }
 
 
+    /**
+     * Method used to calculate rules for (Rows 1-6).
+     * @param rule Which role of 1-6.
+     * @return value of calculated rule.
+     */
     // Regler för ettor till sexor, räknar ihop en viss siffra som är på tärningarna
     static int RuleOneToSix(int rule){
 
@@ -81,6 +94,9 @@ public class Rules {
     }
 
 
+    /**
+     * Method used to calculate (Sum Points Of Rows 1-6).
+     */
     // Räknar ut värdet av första delen på tabellen, om summan är minst 63 så får man en bonus på 50 poäng.
     static void RuleSumAndBunus(){
 
@@ -100,6 +116,10 @@ public class Rules {
     }
 
 
+    /**
+     * Method used to calculate rules for (Pair).
+     * @return Points of (Pair).
+     */
     // tar det största möjliga par
     static int RulePair() {
 
@@ -131,6 +151,10 @@ public class Rules {
 
 
 
+    /**
+     * Method used to calculate rules for (Two Pair).
+     * @return Points of (Two Pair).
+     */
     // tar de två största möjliga par
     static int RuleTwoPair(){
 
@@ -187,6 +211,10 @@ public class Rules {
     }
 
 
+    /**
+     * Method used to calculate rules for (Three Of A Kind).
+     * @return points of (Three Of A Kind).
+     */
     // tre av samma siffra
     static int RuleThreeOfAKind(){
 
@@ -217,6 +245,10 @@ public class Rules {
 
 
 
+    /**
+     * Method used to calculate rules for (Four Of A Kind).
+     * @return Points of (Four Of A Kind).
+     */
     // Fyra av samma siffra
     static int RuleFourOfAKind(){
 
@@ -246,6 +278,10 @@ public class Rules {
         }
 
 
+    /**
+     * Method used to calculate rules for (Small Straight).
+     * @return Points of (Small Straight).
+     */
     // Liten stege (1,2,3,4,5)
     static int RuleSmallStraight(){
 
@@ -275,6 +311,10 @@ public class Rules {
         }
 
 
+    /**
+     * Method used to calculate rules for (Big Straight).
+     * @return Points of (Big Straight).
+     */
     // Stor stege (2,3,4,5,6)
     static int RuleBigStraight(){
 
@@ -304,6 +344,10 @@ public class Rules {
     }
 
 
+    /**
+     * Method used to calculate rules for (Full House).
+     * @return Points of (Full House).
+     */
     // Ett par med två tärningar och ett par med tre tärningar
     static int RuleFullHouse() {
 
@@ -367,6 +411,10 @@ public class Rules {
     }
 
 
+    /**
+     * Method used to calculate rules for (Chance).
+     * @return Points of (Chance).
+     */
     // Räknar ut värdet av alla tärningar
     static int RuleChance(){
 
@@ -377,6 +425,10 @@ public class Rules {
     }
 
 
+    /**
+     * Method used to calculate rules for (Yatzy).
+     * @return Points of (Yatzy).
+     */
     // Alla tärningar visar samma siffra
     static int RuleYatzy(){
 
@@ -406,6 +458,9 @@ public class Rules {
         }
 
 
+    /**
+     * Method used to calculate (Total Points).
+     */
     // Räknar ut total poängen
     static void RuleTotal(){
 
@@ -422,7 +477,10 @@ public class Rules {
     }
 
 
-    static void ResetDicec(){
+    /**
+     * Method used to reset all dices.
+     */
+    static void ResetDices(){
 
         int i = 0;
         MyListener.spins = 0;

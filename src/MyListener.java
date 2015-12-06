@@ -4,7 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by jonas on 2015-11-09.
+ * Class is used to handle all buttons of the Class named
+ * Layout.
  */
 public class MyListener  implements ActionListener {
 
@@ -15,6 +16,10 @@ public class MyListener  implements ActionListener {
     static int throwsLeft = 3;
     static Boolean nextPlayer = false;
 
+    /**
+     * Invoked when an action occurs.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 

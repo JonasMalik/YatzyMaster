@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Created by jonas on 2015-11-10.
+ * This is the class where I store all dices.
  */
 class Dice {
 
@@ -16,10 +16,17 @@ class Dice {
     static ArrayList<Integer> diceClickedOrNot = new ArrayList();
     static int[] valueOfDice = new int[5];
 
+    /**
+     * Used to reach the ArrayList where the dicec is stored.
+     * @return Returns the ArrayList (dices).
+     */
     public ArrayList<JButton> getDices() {
         return dices;
     }
 
+    /**
+     * This is the class where I creates all dices and adding them to JFrame.
+     */
      static void CreatingDices(){
 
         int possition = 100;
@@ -51,15 +58,19 @@ class Dice {
 
 }
 
+/**
+ * Class is used to get a random number to the dices.
+ */
 class GetRandomNumber {
 
     static ImageIcon icon = new ImageIcon();
 
-    static void StartRandomNumber(int index1){
-        GetRandomNumber temp1 = new GetRandomNumber();
-        GetRandomNumber.RandomNumber(index1);
-    }
-
+    /**
+     * Method gets a random number and set the number to a source
+     * of a png image for the dice.
+     *
+     * @param index Brings a specific dice to handle.
+     */
     public static void RandomNumber(int index) {
 
         Random rand = new Random();

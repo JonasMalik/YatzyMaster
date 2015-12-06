@@ -1,10 +1,10 @@
 
-import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * Created by jonas on 2015-11-23.
+ * Class is used to handle all mouse click of the Class named
+ * Layout.
  */
 public class MyMouseListener implements MouseListener {
 
@@ -32,7 +32,7 @@ public class MyMouseListener implements MouseListener {
                 // startar metod för att byta spelare
                 Rules.WhosTurn();
 
-                Rules.ResetDicec();
+                Rules.ResetDices();
                /* //återställning
                 MyListener.spins = 0;
                 MyListener.nextPlayer = false;
