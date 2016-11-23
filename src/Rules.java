@@ -451,7 +451,8 @@ public class Rules {
                     break;
                 }
             }
-            if (match != 5){
+
+        if (match != 5){
                 valueOfDices = 0;
             }
             return valueOfDices;

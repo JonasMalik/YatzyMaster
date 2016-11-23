@@ -3,7 +3,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * Class is used to handle all mouse click of the Class named
+ * Class is used to handle all mouse click
+ * of the Class named
  * Layout.
  */
 public class MyMouseListener implements MouseListener {

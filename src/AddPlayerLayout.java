@@ -8,7 +8,7 @@ import java.awt.*;
 public class AddPlayerLayout extends JFrame{
 
     // Number of player possible (Max 6 players).
-    static int playersPossible = 2;
+    static int playersPossible = 5;
 
     // static String rowData[][] = {{"  Spelare 1:", ""}, {"  Spelare 2:", ""}, {"  Spelare 3:", ""}, {"  Spelare 4:", ""}, {"  Spelare 5:", ""}, {"  Spelare 6:", ""}};
     static String rowData[][] = new String[playersPossible][1];
@@ -92,7 +92,7 @@ public class AddPlayerLayout extends JFrame{
             playerFrame.setDefaultCloseOperation(playerFrame.DISPOSE_ON_CLOSE);
             playerFrame.setLocationRelativeTo(null); //Centrerar fönstret mitt på skärmen
             playerFrame.setVisible(true);
-            playerFrame.setResizable(false);
+            playerFrame.setResizable(true);
 
         }
 
